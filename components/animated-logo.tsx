@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
@@ -98,21 +97,64 @@ export function AnimatedLogo({ size = "md", showText = false, onClick, className
         ))}
       </div>
 
-      {/* 文字标识 */}
+      {/* 文字标识 - 流光溢彩效果 */}
       {showText && (
         <div className="flex flex-col">
           <span
             className={cn(
-              "font-bold text-white transition-all duration-300",
+              "font-bold transition-all duration-300 streaming-text",
               textSizeClasses[size],
-              isHovered && "text-blue-300",
+              isHovered && "text-glow",
             )}
           >
             YanYu Cloud³
           </span>
-          <span className="text-xs text-white/70">言语云立方</span>
         </div>
       )}
+    </div>
+  )
+}
+
+// 流光文字组件
+interface StreamingTextProps {
+  text: string
+  className?: string
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl"
+}
+
+export function StreamingText({ text = "YanYu Cloud³ Platform", className, size = "xl" }: StreamingTextProps) {
+  const [animationKey, setAnimationKey] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimationKey((prev) => prev + 1)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const sizeClasses = {
+    sm: "text-sm",
+    md: "text-base",
+    lg: "text-lg",
+    xl: "text-xl",
+    "2xl": "text-2xl",
+    "3xl": "text-3xl",
+  }
+
+  return (
+    <div className={cn("relative inline-block", className)}>
+      <span
+        key={animationKey}
+        className={cn(
+          "font-bold bg-gradient-to-r from-blue-400 via-purple-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-streaming-gradient bg-[length:200%_100%]",
+          sizeClasses[size],
+        )}
+      >
+        {text}
+      </span>
+
+      {/* 流光效果叠加层 */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-streaming-light opacity-0" />
     </div>
   )
 }

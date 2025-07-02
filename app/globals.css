@@ -85,6 +85,69 @@
   }
 }
 
+/* 流光溢彩动画 */
+@keyframes streaming-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes streaming-light {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-streaming-gradient {
+  animation: streaming-gradient 3s ease-in-out infinite;
+}
+
+.animate-streaming-light {
+  animation: streaming-light 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out 0.5s forwards;
+}
+
+.streaming-text {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #22d3ee, #60a5fa);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: streaming-gradient 3s ease-in-out infinite;
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(96, 165, 250, 0.8), 0 0 40px rgba(167, 139, 250, 0.6), 0 0 60px rgba(34, 211, 238, 0.4);
+}
+
 /* 自定义动画 */
 @keyframes float {
   0%,
@@ -197,36 +260,73 @@
   transition: opacity 300ms, transform 300ms;
 }
 
-/* 滚动条样式 */
+/* 移动端优化滚动条 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
-/* 响应式文本 */
+/* 移动端响应式文本 */
 @media (max-width: 640px) {
+  .text-responsive-xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .text-responsive-2xl {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .text-responsive-3xl {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
   .text-responsive-xl {
     font-size: 2rem;
     line-height: 2.5rem;
   }
+
+  .text-responsive-2xl {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  .text-responsive-3xl {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 1025px) {
   .text-responsive-xl {
     font-size: 3rem;
+    line-height: 1;
+  }
+
+  .text-responsive-2xl {
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  .text-responsive-3xl {
+    font-size: 5rem;
     line-height: 1;
   }
 }
@@ -368,11 +468,17 @@
   }
 }
 
-/* 弹性布局系统 */
+/* 移动端优化的弹性布局系统 */
 .flex-container {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .flex-container {
+    gap: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -386,56 +492,64 @@
   min-width: 0;
 }
 
-/* 弹性网格系统 */
+/* 移动端优化的弹性网格系统 */
 .grid-responsive {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 @media (min-width: 640px) {
   .grid-responsive {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
   .grid-responsive {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 }
 
 .grid-responsive-sm {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 @media (min-width: 640px) {
   .grid-responsive-sm {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }
 
-/* 按钮对比度优化 */
+/* 移动端优化按钮 */
 .btn-contrast {
-  @apply bg-white/20 hover:bg-white/30 text-white border-white/30;
+  @apply bg-white/20 hover:bg-white/30 text-white border-white/30 text-sm sm:text-base;
+  min-height: 44px; /* 移动端触摸友好 */
 }
 
 .btn-primary-contrast {
-  @apply bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white border-0;
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white border-0 text-sm sm:text-base;
+  min-height: 44px;
 }
 
 .btn-success-contrast {
-  @apply bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white border-0;
+  @apply bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white border-0 text-sm sm:text-base;
+  min-height: 44px;
 }
 
 .btn-warning-contrast {
-  @apply bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white border-0;
+  @apply bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white border-0 text-sm sm:text-base;
+  min-height: 44px;
 }
 
 .btn-danger-contrast {
-  @apply bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white border-0;
+  @apply bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white border-0 text-sm sm:text-base;
+  min-height: 44px;
 }
 
 /* 数据同步动画 */
@@ -492,5 +606,65 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* 移动端优化的输入框和表单 */
+@media (max-width: 640px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* 防止iOS缩放 */
+    min-height: 44px; /* 触摸友好 */
+  }
+
+  .card {
+    margin: 0.5rem;
+  }
+
+  .tabs-list {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .tabs-trigger {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+/* 移动端优化的模态框 */
+@media (max-width: 640px) {
+  .modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+}
+
+/* 移动端优化的表格 */
+@media (max-width: 640px) {
+  .table-responsive {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .table-responsive table {
+    min-width: 600px;
+  }
+}
+
+/* 移动端优化的导航 */
+@media (max-width: 1024px) {
+  .nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
   }
 }

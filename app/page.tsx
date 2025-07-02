@@ -1190,12 +1190,7 @@ ${
                     onClick={handleLogoClick}
                     className="transition-all duration-300"
                   />
-                  <div className="hidden md:block">
-                    <Badge className="bg-gradient-to-r from-green-500/20 to-blue-500/20 text-white border-green-300/30">
-                      <Globe className="w-3 h-3 mr-1" />
-                      www.yy.0379.pro
-                    </Badge>
-                  </div>
+                  <div className="hidden md:block"></div>
                 </div>
                 <div className="hidden md:flex items-center space-x-4">
                   {/* API状态指示器 */}
