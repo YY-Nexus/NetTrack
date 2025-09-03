@@ -15,9 +15,9 @@ export function Logo() {
       </div>
       <div className="flex flex-col">
         <span className="font-bold text-lg leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-          言语云³集成中心系统
+          YanYuCloud³ Integration Center
         </span>
-        <span className="text-xs text-muted-foreground leading-tight font-medium">YY C³-IC</span>
+        
       </div>
     </Link>
   )

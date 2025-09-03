@@ -116,8 +116,8 @@ export default function HomePage() {
                   }}
                 />
               </motion.h1>
-              <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10">
-                发现、连接并管理强大的集成应用，提升您的业务效率
+              <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-10 text-violet-600">
+                {"万象归元于云枢丨深栈智启新纪元"}
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button
@@ -275,21 +275,21 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="mb-6 md:mb-0">
                 <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  言语云³集成中心系统
+                  YanYuCloud³ Integration Center
                 </h2>
                 <p className="text-gray-400 mt-2">© YanYu Cloud³ {new Date().getFullYear()}. 保留所有权利。</p>
               </div>
               <div className="flex space-x-6">
-                <Link href="#" className="hover:text-blue-400 transition-colors">
+                <Link href="#" className="hover:text-blue-400 transition-colors text-purple-500">
                   关于我们
                 </Link>
-                <Link href="#" className="hover:text-blue-400 transition-colors">
+                <Link href="#" className="hover:text-blue-400 transition-colors text-purple-500">
                   联系我们
                 </Link>
-                <Link href="#" className="hover:text-blue-400 transition-colors">
+                <Link href="#" className="hover:text-blue-400 transition-colors text-purple-500">
                   隐私政策
                 </Link>
-                <Link href="#" className="hover:text-blue-400 transition-colors">
+                <Link href="#" className="hover:text-blue-400 transition-colors text-purple-500">
                   服务条款
                 </Link>
               </div>

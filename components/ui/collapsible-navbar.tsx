@@ -98,8 +98,8 @@ export function CollapsibleNavbar({ className }: CollapsibleNavbarProps) {
           <div className="flex items-center space-x-3 flex-shrink-0">
             <Logo className="transition-all duration-300" />
             <div className="hidden sm:flex flex-col">
-              <h1 className="text-lg font-bold text-blue-900 leading-tight whitespace-nowrap">言语云³集成中心系统</h1>
-              <span className="text-xs text-blue-600/70 whitespace-nowrap">YY C³-IC</span>
+              <h1 className="text-lg font-bold text-blue-900 leading-tight whitespace-nowrap">{""}</h1>
+              <span className="text-xs text-blue-600/70 whitespace-nowrap">{""} </span>
             </div>
             {/* 移动端简化显示 */}
             <div className="sm:hidden">
